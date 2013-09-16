@@ -8,6 +8,7 @@ var querystring = require('querystring');
 var hbs = require('hbs');
 var stylus = require('stylus');
 var nib = require('nib');
+var lessMiddleware = require('less-middleware');
 var connect = require('connect');
 var cookie = require('connect').utils;
 var request = require('request');
@@ -28,10 +29,14 @@ app.use(cookieParser);
 app.use(stylus.middleware({
 	src: __dirname + '/public',
 	compile: function compile(str, path) {
-   return stylus(str)
-     .set('filename', path)
-     .use(nib());
+	 return stylus(str)
+		 .set('filename', path)
+		 .use(nib());
  }
+}));
+app.use(lessMiddleware({
+	src: __dirname + '/public',
+	compress: false
 }));
 app.use(express.static(__dirname + '/public'));
 
@@ -118,7 +123,7 @@ app.get('/schedule', function(request, response) {
 });
 
 app.post('/logout', function(request, response) {
- 	console.log('/logout', request.session ? request.session.email : 'none');
+	console.log('/logout', request.session ? request.session.email : 'none');
 	request.session.destroy();
 	response.status(200).send();
 });

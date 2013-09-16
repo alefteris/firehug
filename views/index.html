@@ -7,49 +7,48 @@
 	<meta name="fragment" content="!">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="css/app.css" />
+	<link rel="stylesheet" href="css/app-sandstone.css" />
 </head>
-<body>
-	<header class="navbar navbar-default navbar-inverse" role="banner" ng-show="user">
-		<div class="container">
-			<div class="navbar-header">
-				<!--
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				-->
-				<a href="#!/" class="navbar-brand" ng-show="path != '/'">◀</a>
-			</div>
-			<!--
-			<nav class="collapse navbar-collapse" role="navigation" ng-show="ready">
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="#!/logout">Logout</a>
-					</li>
-				</ul>
+<body class="sand">
+	<div id="outer-wrapper">
+	 <div id="wrapper">
+		<header id="masthead">
+			<nav id="nav-main" role="navigation">
+			  <ul id="nav-main-menu">
+			    <li class="first" id="nav-main-features"><a href="/#!/" class="submenu-item">Back</a>
+			    </li>
+			  </ul>
 			</nav>
-			-->
+		</header>
+
+		<main role="main" id="main-feature">
+			<div ng-view></div>
+		</main>
+
+	 </div>
+
+		<!--
+		<footer id="colophon">
+			<div class="row">
+				<ul class="primary">
+					<li><a href="/#!/logout" ng-show="user"><span>Logout</span></a></li>
+				</ul>
+				<ul class="secondary">
+					<li><a href="https://www.mozilla.org/en-US/privacy/">Privacy Policy</a></li>
+					<li><a href="https://www.mozilla.org/en-US/about/legal.html">Legal Notices</a></li>
+				</ul>
+			</div>
+		</footer>
+		-->
+
+		<div ng-hide="ready" id="splash-screen">
+			<h1>{Logo}</h1>
 		</div>
-	</header>
-
-	<main class="container" role="main">
-		<div ng-view></div>
-	</main>
-
-	<footer class="container" role="contentinfo">
-		<hr>
-		<p class="text-center">
-			<a href="#!/logout" ng-show="user">Logout</a>
-		</p>
-	</footer>
-
-	<div ng-hide="ready" id="splash-screen">
-		<h1>{Logo}</h1>
 	</div>
+
+	<footer>
+
+	</footer>
 
 	<!-- Scripts -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
